@@ -59,5 +59,18 @@ public class ClienteController {
 			return Void.TYPE;
 		}).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Cliente nao encontrado."));
 	}
+	
+	
+	@PutMapping("/{id}")
+	@ResponseStatus(HttpStatus.OK)
+	
+	public Cliente update(@PathVariable("id")  Long id , @RequestBody Cliente cliente) {
+		
+		return clienteService.update(id, cliente);
+		
+		
+		
+	}
+	
 
 }

@@ -37,4 +37,18 @@ public class ClienteService {
 
 	}
 
+	public Cliente update(Long id, Cliente obj) {
+
+		Cliente newObj = new Cliente();
+		
+		
+        newObj.setId(id);
+		newObj.setNome(obj.getNome());
+		newObj.setCpf(obj.getCpf());
+		newObj.setEmail(obj.getEmail());
+
+		return clienteRepository.save(newObj);
+
+	}
+
 }
