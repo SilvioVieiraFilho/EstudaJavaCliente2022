@@ -16,3 +16,13 @@ spring:
     console:
       enabled: true
       path: /h2
+      
+security:
+  oauth2:
+    client:
+      scope:
+      - password
+      client-id: ninogt
+      client-secret: 123
+         
+          

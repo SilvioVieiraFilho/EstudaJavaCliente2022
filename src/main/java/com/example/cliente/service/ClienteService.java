@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.cliente.entity.BaseResponse;
 import com.example.cliente.entity.Cliente;
 import com.example.cliente.repository.ClienteRepository;
 
@@ -16,10 +17,29 @@ public class ClienteService {
 
 	private ClienteRepository clienteRepository;
 
-	public Cliente salvar(Cliente cliente) {
+	public BaseResponse  salvar(Cliente cliente) {
+		
+		BaseResponse response = new BaseResponse();
 
-		return clienteRepository.save(cliente);
+		
+		if(cliente.getNome()  ==  "") {
+			
+			response.message = " Preencha o nome corretamente";
+			response.statusCode = 400;
+		
+		}
+		else {
+		
+			
+		 
+			clienteRepository.save(cliente);
+			 
+			 response.message = "Dependente salvo";
+				response.statusCode = 200;
 
+		}
+		
+		 return response;
 	}
 
 	public List<Cliente> ListaCliente() {
